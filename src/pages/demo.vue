@@ -1,15 +1,12 @@
 <template>
   <div class="demo">
     <my-header></my-header>
-
     <button @click="add('a-demo', '我是A')">添加A组件</button>
-    <!-- <button @click="add('b-demo', '我是B')">添加B组件</button> -->
-    <component :is="item.component" :text="item.text" v-for="(item,index) in items" @click="minus" :key="index" v-on:mousedown="mousedown($event)" v-on:mouseup="mouseup($event)"></component>
+    <component :is="item.component" :text="item.text" v-for="(item,index) in items" @click="minus" :key="index" v-on:mousedown="mousedown($event)" v-on:mouseup="mouseup($event)" v-model="item.observing"></component>
   </div>
 </template>
 <script>
 import aDemo from "../components/aComponent";
-// import bDemo from "../components/bComponent";
 import cDemo from "../components/cComponent";
 import myHeader from '../components/header';
 
@@ -18,14 +15,12 @@ export default {
   components: {
     aDemo,
     myHeader,
-    
-    // cDemo,
-    // bDemo
   },
   data() {
     return {
       items: [],
       allComponents: [],
+      searchText:''
     }
   },
   methods: {

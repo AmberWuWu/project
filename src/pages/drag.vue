@@ -3,7 +3,9 @@
     <my-header></my-header>
     <div class='drag-content' id="dragCon">
       <div class='project-content'>
-        <div class='select-item' draggable='true' @dragstart='drag($event)' v-for="pjdt in projectdatas">{{pjdt.name}}</div>
+        <div class='select-item' draggable='true' @dragstart='drag($event)' v-for="pjdt in projectdatas">
+          <div class="" draggable='false' >{{pjdt.name}}</div>
+        </div>
       </div>
       <div class='people-content'>
         <div class='drag-div' v-for="ppdt in peopledata" @drop='drop($event)' @dragover='allowDrop($event)'>
@@ -28,7 +30,7 @@ export default {
     return {
       projectdatas: [{
         id: 1,
-        name: '葡萄'
+        name: '西瓜'
       }, {
         id: 2,
         name: '芒果'
@@ -37,20 +39,20 @@ export default {
         name: '木瓜'
       }, {
         id: 4,
-        name: '榴莲'
+        name: '樱桃'
       }],
       peopledata: [{
         id: 1,
-        name: '小颖'
+        name: '小W'
       }, {
         id: 2,
-        name: 'hover'
+        name: '小P'
       }, {
         id: 3,
-        name: '空巢青年三 '
+        name: '爸爸妈妈 '
       }, {
         id: 3,
-        name: '一丢丢'
+        name: '爸爸妈妈'
       }]
     }
   },
@@ -93,6 +95,11 @@ export default {
   cursor: pointer;
   padding: 6px 20px;
   color: #fff;
+}
+
+.select-item div {
+  background: red;
+  padding: 20px;
 }
 
 .cursored {
